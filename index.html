@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Francisco Atalaya — Cybersecurity Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#000000;
+    --ink-soft:#1f1f1f;
+    --muted:#787878;
+    --hair:rgba(0,0,0,0.10);
+    --hair-strong:rgba(0,0,0,0.85);
+    --pad:48px;
+    --maxw:1240px;
+    --sans:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    --serif:"Fraunces", "Times New Roman", serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{font-size:16px;line-height:1.55;letter-spacing:0;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--ink);color:var(--paper)}
+
+  /* nav */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:20px var(--pad);
+    background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--hair);
+    font-size:13px;
+  }
+  .nav .brand{font-weight:500;letter-spacing:-0.005em}
+  .nav .brand em{font-family:var(--serif);font-style:italic;font-weight:300}
+  .nav .tabs{display:flex;gap:8px;justify-self:center;align-items:center}
+  .nav .tab{
+    position:relative;
+    color:var(--muted);transition:color .25s;
+    padding:6px 14px;border-radius:999px;
+    font-weight:400;font-size:13px;
+    cursor:pointer;border:1px solid transparent;background:transparent;
+    font-family:inherit;
+  }
+  .nav .tab:hover{color:var(--ink)}
+  .nav .tab.active{color:var(--ink);border-color:var(--ink)}
+  .nav .tab em{font-family:var(--serif);font-style:italic;font-weight:300;margin-right:4px;color:var(--muted)}
+  .nav .tab.active em{color:var(--ink)}
+  .nav .cta{justify-self:end;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+  .nav .cta::after{content:"↗";font-weight:300;transition:transform .3s}
+  .nav .cta:hover::after{transform:translate(2px,-2px)}
+
+  main{padding-top:0}
+  section{padding:0 var(--pad)}
+  .wrap{max-width:var(--maxw);margin:0 auto;width:100%}
+
+  .label{font-size:11px;letter-spacing:0.04em;color:var(--muted);text-transform:none}
+  .label::before{content:"— "}
+
+  h2{
+    font-family:var(--sans);font-weight:500;
+    font-size:24px;line-height:1.25;letter-spacing:-0.005em;
+    margin-bottom:28px;
+  }
+
+  /* HERO */
+  .hero{
+    padding:140px var(--pad) 72px;
+    display:flex;flex-direction:column;justify-content:flex-start;
+  }
+  .hero-top{
+    display:flex;justify-content:space-between;
+    font-size:12px;color:var(--muted);
+  }
+  .hero-top .available{color:var(--ink);display:inline-flex;align-items:center;gap:8px}
+  .hero-top .dot{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+  .hero-name{
+    font-family:var(--sans);font-weight:500;
+    font-size:clamp(44px, 6.4vw, 96px);
+    line-height:0.95;letter-spacing:-0.015em;
+    max-width:14ch;
+    margin:48px 0 28px;
+  }
+
+  .hero-bottom{
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;
+  }
+  .hero-role{
+    font-family:var(--sans);font-weight:500;font-size:18px;line-height:1.3;
+  }
+  .hero-role .sub{display:block;font-weight:300;color:var(--muted);margin-top:4px}
+  .hero-pitch{
+    font-size:16px;line-height:1.6;font-weight:300;
+    max-width:48ch;justify-self:end;
+  }
+  .hero-pitch strong{font-weight:500}
+
+  /* INTRO MANIFESTO */
+  .intro{padding:120px var(--pad);border-top:1px solid var(--ink)}
+  .intro-head{
+    display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;
+    margin-bottom:0;
+  }
+  .intro-text{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(20px, 2.2vw, 26px);
+    line-height:1.35;letter-spacing:-0.005em;
+    max-width:36ch;
+  }
+
+  /* SECTION BLOCKS */
+  .block{padding:96px var(--pad);border-top:1px solid var(--ink)}
+  .block .grid{
+    display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;
+    max-width:var(--maxw);margin:0 auto;
+  }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;grid-template-columns:140px minmax(0,1fr);gap:40px;
+    margin-top:40px;
+    align-items:start;
+  }
+  .portrait-col{display:flex;flex-direction:column;gap:14px}
+  .portrait-wrap{
+    width:140px;
+    aspect-ratio: 224/266;
+    background:url("portrait.jpg") center/cover no-repeat;
+  }
+  .portrait-degree{
+    font-weight:200;
+    font-size:13px;line-height:1.4;color:var(--ink);
+  }
+  .portrait-degree .k{font-size:10px;color:var(--muted);margin-bottom:4px;font-weight:300;letter-spacing:0.04em}
+  .about-body{display:flex;flex-direction:column;gap:18px;max-width:60ch;align-self:start}
+  .about-body p{font-size:16px;line-height:1.7;font-weight:300}
+  .about-body p strong{font-weight:500}
+  .about-meta{
+    margin-top:28px;padding-top:24px;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px 32px;
+  }
+  .about-meta .item .k{font-size:11px;color:var(--muted);margin-bottom:4px}
+  .about-meta .item .v{font-size:14px;font-weight:400;line-height:1.45}
+
+  /* EXPERIENCE */
+  .exp-list{margin-top:8px;border-top:1px solid var(--ink)}
+  .exp{
+    display:grid;grid-template-columns:1fr 2fr 160px;gap:40px;
+    padding:32px 0;border-bottom:1px solid var(--hair);
+    align-items:start;
+  }
+  .exp h3{font-family:var(--sans);font-weight:500;font-size:17px;line-height:1.3;letter-spacing:-0.005em;margin-bottom:4px}
+  .exp .e-sub{font-family:var(--serif);font-style:italic;font-weight:300;font-size:16px;color:var(--muted)}
+  .exp ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .exp li{font-size:14px;line-height:1.6;color:var(--ink-soft);padding-left:16px;position:relative;font-weight:300}
+  .exp li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+  .exp .e-date{font-size:12px;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums;padding-top:2px}
+
+  /* SKILLS / EDU mini grid */
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:8px;border-top:1px solid var(--ink)}
+  .twocol > div{padding:32px 0 0 0}
+  .twocol h4{font-size:11px;letter-spacing:0.04em;color:var(--muted);margin-bottom:16px;font-weight:400}
+  .twocol h4::before{content:"— "}
+  .skills-list{display:flex;flex-direction:column;gap:14px}
+  .skills-list .row{display:grid;grid-template-columns:140px 1fr;gap:20px;font-size:14px;line-height:1.5;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+  .skills-list .row:last-child{border-bottom:none;padding-bottom:0}
+  .skills-list .row .k{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);font-size:14px}
+  .skills-list .row .v{font-weight:300}
+
+  /* PORTFOLIO */
+  .pf-intro{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(20px, 2.2vw, 26px);
+    line-height:1.35;letter-spacing:-0.005em;
+    max-width:36ch;
+  }
+
+  /* PROJECT CARDS */
+  .project-cards{
+    margin-top:48px;
+    display:grid;grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:20px;
+  }
+  .project-card{
+    display:flex;flex-direction:column;
+    padding:32px 28px;
+    border:1px solid var(--ink);
+    background:var(--paper);
+    transition:transform .35s ease, background .35s ease;
+    min-height:340px;
+  }
+  .project-card:hover{
+    transform:translateY(-4px);
+    background:#fafafa;
+  }
+  .project-card .n{
+    font-family:var(--sans);font-weight:500;
+    font-size:64px;line-height:0.9;letter-spacing:-0.02em;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .project-card h3{
+    font-family:var(--sans);font-weight:500;
+    font-size:20px;line-height:1.25;letter-spacing:-0.005em;
+    margin-bottom:10px;
+  }
+  .project-card .tagline{
+    font-size:13px;line-height:1.55;color:var(--ink-soft);font-weight:300;
+    margin-bottom:24px;
+  }
+  .project-card .foot{
+    margin-top:auto;
+    display:flex;flex-direction:column;gap:18px;
+    padding-top:20px;border-top:1px solid var(--hair);
+  }
+  .project-card .stack{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+  .project-card .stack span{
+    font-size:10px;letter-spacing:0.03em;
+    padding:3px 9px;border:1px solid var(--hair-strong);border-radius:999px;
+    color:var(--ink);font-weight:300;
+  }
+  .project-card .repo{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:500;
+    padding-bottom:3px;border-bottom:1px solid var(--ink);
+    align-self:flex-start;
+    transition:gap .3s;
+  }
+  .project-card .repo::after{content:"↗";font-weight:300;transition:transform .3s}
+  .project-card .repo:hover{gap:14px}
+  .project-card .repo:hover::after{transform:translate(3px,-3px)}
+
+  /* CONTACT */
+  .contact{
+    padding:120px var(--pad) 48px;border-top:1px solid var(--ink);
+  }
+  .contact-head{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start;margin-bottom:64px}
+  .contact h2{
+    font-family:var(--sans);font-weight:500;
+    font-size:clamp(30px, 4vw, 52px);
+    line-height:1.05;letter-spacing:-0.015em;
+    margin-bottom:0;max-width:18ch;
+  }
+
+  .contact-cta-wrap{margin-bottom:80px;padding-left:248px}
+  .contact-cta{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--sans);font-weight:500;
+    font-size:17px;letter-spacing:-0.005em;
+    padding-bottom:6px;border-bottom:1px solid var(--ink);
+    transition:gap .3s;
+  }
+  .contact-cta::after{content:"↗";font-style:normal;font-family:var(--sans);font-weight:300;transition:transform .3s}
+  .contact-cta:hover{gap:20px}
+  .contact-cta:hover::after{transform:translate(4px,-4px)}
+
+  .contact-channels{
+    display:grid;grid-template-columns:200px repeat(3,1fr);gap:48px;
+    padding-top:32px;border-top:1px solid var(--ink);
+  }
+  .contact-channels .c .k{font-size:11px;color:var(--muted);margin-bottom:10px}
+  .contact-channels .c a, .contact-channels .c span{
+    display:block;font-size:14px;line-height:1.55;
+  }
+  .contact-channels .c a{transition:color .2s}
+  .contact-channels .c a:hover{color:var(--muted)}
+
+  footer{
+    margin-top:80px;padding-top:24px;border-top:1px solid var(--hair);
+    display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;
+    font-size:12px;color:var(--muted);
+  }
+  footer .center{text-align:center;font-family:var(--serif);font-style:italic;font-size:13px}
+  footer .right{text-align:right}
+
+  /* TAB PANELS */
+  .panel{display:none;animation:fade .5s ease}
+  .panel.active{display:block}
+  @keyframes fade{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* responsive */
+  @media (max-width: 1100px){
+    .project-cards{grid-template-columns:repeat(2, minmax(0,1fr))}
+  }
+  @media (max-width: 900px){
+    :root{--pad:24px}
+    .nav{grid-template-columns:1fr auto;gap:8px}
+    .nav .tabs{justify-self:end;order:2}
+    .nav .cta{display:none}
+    .hero-bottom{grid-template-columns:1fr;gap:24px}
+    .hero-pitch{justify-self:start}
+    .intro-head, .block .grid, .about-grid, .contact-head, .contact-channels{grid-template-columns:1fr;gap:20px}
+    .contact-cta-wrap{padding-left:0}
+    .project-cards{grid-template-columns:1fr;gap:16px}
+    .project-card{min-height:auto;padding:24px}
+    .exp{grid-template-columns:1fr;gap:14px}
+    .exp .e-date{text-align:left}
+    .twocol{grid-template-columns:1fr;gap:0}
+    .skills-list .row{grid-template-columns:110px 1fr;gap:14px}
+    footer{grid-template-columns:1fr;text-align:left}
+    footer .center, footer .right{text-align:left}
+    .about-meta{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#top" class="brand" data-go="about">Francisco Atalaya</a>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="about" role="tab" aria-selected="true"><em>01</em>About</button>
+    <button class="tab" data-tab="portfolio" role="tab" aria-selected="false"><em>02</em>Portfolio</button>
+  </div>
+  <a class="cta" href="#contact">Get in touch</a>
+</nav>
+
+<main id="top">
+
+  <!-- ============ TAB: ABOUT ME ============ -->
+  <div class="panel active" id="panel-about" role="tabpanel">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-top">
+        <span>Cybersecurity Engineer — Madrid, ES</span>
+        <span class="available"><span class="dot"></span> Open to new opportunities</span>
+      </div>
+
+      <h1 class="hero-name">
+        Francisco<br/>Atalaya Gómez.
+      </h1>
+
+      <div class="hero-bottom">
+        <div class="hero-role">
+          Cybersecurity Engineer
+          <span class="sub">IT / OT · ISA Member</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="block">
+      <div class="wrap">
+        <div class="grid reveal">
+          <div class="label">01 — About</div>
+          <div>
+            <h2>Four years between consulting and the plant floor.</h2>
+
+            <div class="about-grid">
+              <div class="portrait-col">
+                <div class="portrait-wrap" role="img" aria-label="Francisco Atalaya portrait"></div>
+                <div class="portrait-degree"><div class="k">EDUCATION</div>Telecommunications<br/>Engineer</div>
+              </div>
+
+              <div class="about-body">
+                <p>Cybersecurity engineer based in Madrid with four years of experience across <strong>consulting and industrial environments</strong> —transport, water and energy— specialising in IT-OT security integration and critical infrastructure protection.</p>
+                <p>Previously at <strong>PwC</strong> (consulting) and <strong>Ferrovial</strong> (internal Cyber team). ISA member and ISA/IEC 62443 Cybersecurity Fundamentals Specialist.</p>
+
+                <div class="about-meta">
+                  <div class="item"><div class="k">Based in</div><div class="v">Madrid, Spain</div></div>
+                  <div class="item"><div class="k">Languages</div><div class="v">Spanish · English</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="block">
+      <div class="wrap">
+        <div class="grid reveal">
+          <div class="label">02 — Experience</div>
+          <div>
+            <h2>Professional Career.</h2>
+            <div class="exp-list">
+              <div class="exp">
+                <div>
+                  <h3>Senior Cybersecurity Specialist</h3>
+                  <div class="e-sub">Ferrovial</div>
+                </div>
+                <ul>
+                  <li>Cybersecurity assessments across IT/OT enviroment in different sectors (NIST CSF, IEC 62443,ISO27001)</li>
+                  <li>Cyber risk analysis and business continuity design for critical infrastructures (Bowtie methodology)</li>
+                  <li>Design and implementation of secure architectures (network segmentation, Zero Trust, hardening)</li>
+                  <li>Deployment and integration of security monitoring solutions across cloud and on-prem environments (Microsoft Defender, Palo Alto Networks firewalls, Nozomi, Claroty)</li>
+                  <li>SIEM/SOC collaboration: log analysis, alert triage, and use case tuning (Sentinel, QRadar)</li>
+                  <li>Security testing in operational environments and attack simulations using Penterali>
+                  <li>Identification of vulnerabilities (Nessus) and misconfigurations, mapped to MITRE ATT&CK techniques, threat modelling</li>
+                  <li>Definition of incident response playbooks and detection strategies for IT/OT environments</li>
+                  <li>Development and validation of use cases for threat detection accross IT/OT environments</li>
+                  <li>Hands-on testing in cybersecurity lab (IDS, network traffic analysis, firewalls, simulated environments)</li>
+                  <li>Participation in digital twin initiatives for critical infrastructure resilience and business continuity</li>
+                </ul>
+                <div class="e-date">Apr 2023 — Jan 2026</div>
+              </div>
+
+              <div class="exp">
+                <div>
+                  <h3>Cybersecurity Consultant</h3>
+                  <div class="e-sub">PwC</div>
+                </div>
+                <ul>
+                  <li>Cybersecurity assessments aligned with NIST CSF: gap analysis and risk evaluation.</li>
+                  <li>SIEM integration and use-case development in QRadar (log onboarding, correlation rules).</li>
+                  <li>Security maturity assessments and definition of improvement roadmaps.</li>
+                  <li>Threat detection support and monitoring optimisation</li>
+                </ul>
+                <div class="e-date">Jun 2022 — Apr 2023</div>
+              </div>
+
+              <div class="exp">
+                <div>
+                  <h3>Software Developer</h3>
+                  <div class="e-sub">Minsait</div>
+                </div>
+                <ul>
+                  <li>Software development internship: first exposure to production environments and engineering practices.</li>
+                </ul>
+                <div class="e-date">May 2021 — Sep 2021</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS / EDU -->
+    <section id="skills" class="block">
+      <div class="wrap">
+        <div class="grid reveal">
+          <div class="label">03 — Skills</div>
+          <div>
+            <h2>Stack &amp; certifications.</h2>
+            <div class="twocol">
+              <div>
+                <h4>Technical stack</h4>
+                <div class="skills-list">
+                  <div class="row"><div class="k">Scripting</div><div class="v">Python · Java · C · JavaScript · Bash</div></div>
+                  <div class="row"><div class="k">Defensive</div><div class="v">SIEM (Sentinel, QRadar) · IDS (MD4IoT) · EDR (Defender) · Palo Alto · Fortinet</div></div>
+                  <div class="row"><div class="k">Offensive</div><div class="v">Nmap · Scapy · Wireshark · Ettercap · Kali · Pentera · Metasploit · Nessus</div></div>
+                  <div class="row"><div class="k">Frameworks</div><div class="v">NIST CSF · ISA/IEC 62443 · ISO 27001 · MITRE ATT&amp;CK</div></div>
+                  <div class="row"><div class="k">Industrial</div><div class="v">OpenPLC · SCADA LTS · TIA Portal · SUMO</div></div>
+                </div>
+              </div>
+              <div>
+                <h4>Education &amp; certifications</h4>
+                <div class="skills-list">
+                  <div class="row"><div class="k">Degree</div><div class="v">BSc Telecommunication Technologies Engineering — UC3M</div></div>
+                  <div class="row"><div class="k">Exchange</div><div class="v">RWTH Aachen University · Electrical Eng. &amp; Computer Eng.</div></div>
+                  <div class="row"><div class="k">Cert.</div><div class="v"><strong>ISA/IEC 62443 Cybersecurity Fundamentals Specialist</strong></div></div>
+                  <div class="row"><div class="k">Languages</div><div class="v">First Certificate in English (B2) · Deutschkurs A1.a</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /panel-about -->
+
+
+  <!-- ============ TAB: PORTFOLIO ============ -->
+  <div class="panel" id="panel-portfolio" role="tabpanel">
+
+    <!-- PORTFOLIO HERO -->
+    <section class="hero" style="min-height:auto;padding-top:140px;padding-bottom:48px">
+      <div class="hero-top">
+        <span>Portfolio — selected work</span>
+        <span class="available">github.com/FcoAtalaya</span>
+      </div>
+
+      <h1 class="hero-name">
+        Selected work<br/>&amp; research.
+      </h1>
+
+      <div class="hero-bottom">
+        <div class="hero-role">
+          Selected projects
+          <span class="sub">Personal &amp; academic work</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="block">
+      <div class="wrap">
+        <div class="grid reveal">
+          <div class="label">Projects</div>
+          <div>
+            <h2>Selected projects.</h2>
+          </div>
+        </div>
+
+        <div class="project-cards reveal">
+
+          <!-- 01 CYBERTOOLS -->
+          <article class="project-card">
+            <div class="n">01</div>
+            <h3>Cybertools</h3>
+            <p class="tagline">Utilities framework for a complte cybersecurity workflow. Offline, no data leaks. Ongoing.</p>
+            <div class="foot">
+              <div class="stack">
+                <span>Assets discovery</span><span>Risk assessments</span><span>Vulnerabilities</span>
+              </div>
+              <a class="repo" href="https://fcoatalaya.github.io/cybertools/" target="_blank" rel="noopener">View repository</a>
+            </div>
+          </article>
+
+          <!-- 02 ANONYMIZER -->
+          <article class="project-card">
+            <div class="n">02</div>
+            <h3>Anonymizer</h3>
+            <p class="tagline">Utility to anonymize sensitive data in logs, captures and exports maintaining the network logics</p>
+            <div class="foot">
+              <div class="stack">
+                <span>Python</span><span>Scapy</span><span>Cryptography</span><span>Compliance</span>
+              </div>
+              <a class="repo" href="https://github.com/FcoAtalaya/anonymizer" target="_blank" rel="noopener">View repository</a>
+            </div>
+          </article>
+
+          <!-- 03 RANSOMWARE -->
+          <article class="project-card">
+            <div class="n">03</div>
+            <h3>Analysis &amp; Solutions of Ransomwares</h3>
+            <p class="tagline">Bachelor thesis (9.7/10): functional Python ransomware paired with a real-time detector based on filesystem activity.</p>
+            <div class="foot">
+              <div class="stack">
+                <span>Python</span><span>Cryptography</span><span>File monitoring</span><span>VM lab</span>
+              </div>
+              <a class="repo" href="https://github.com/FcoAtalaya/Analysis-implementation-and-solutions-of-Ransomwares" target="_blank" rel="noopener">View repository</a>
+            </div>
+          </article>
+
+          <!-- 04 DYNABIC -->
+          <article class="project-card">
+            <div class="n">04</div>
+            <h3>DYNABIC</h3>
+            <p class="tagline">EU funded-research project working in the areas of Critical Infrastructure Protection and dynamic response
+against cyber-physical threats.</p>
+            <div class="foot">
+              <div class="stack">
+                <span>Digital twins</span><span>Business Continuity</span><span>Critical infrastructures</span>
+              </div>
+              <a class="repo" href="https://dynabic.eu/" target="_blank" rel="noopener">View repository</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /panel-portfolio -->
+
+</main>
+
+<!-- CONTACT (compartido) -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="contact-head reveal">
+      <div class="label">— Contact</div>
+      <h2>Open to new opportunities.</h2>
+    </div>
+
+    <div class="contact-cta-wrap reveal">
+      <a class="contact-cta" href="/cdn-cgi/l/email-protection#204652414e434953434f4154414c415941474f4d455a60474d41494c0e434f4d">Get in touch about a role</a>
+    </div>
+
+    <div class="contact-channels">
+      <div class="label">Channels</div>
+      <div class="c">
+        <div class="k">Direct</div>
+        <a href="/cdn-cgi/l/email-protection#442236252a272d37272b25302528253d25232b29213e042329252d286a272b29"><span class="__cf_email__" data-cfemail="5d3b2f3c333e342e3e323c293c313c243c3a323038271d3a303c3431733e3230">franciscoatalayagomez@gmail.com</span></a>
+      </div>
+      <div class="c">
+        <div class="k">Network</div>
+        <a href="https://linkedin.com/in/francisco-atalaya-gomez" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/FcoAtalaya" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="c">
+        <div class="k">Based in</div>
+        <span>Madrid, Spain</span>
+        <span>UTC+1</span>
+      </div>
+    </div>
+
+    <footer>
+      <div>© 2026 Francisco Atalaya Gómez</div>
+      <div class="center">Cybersecurity Engineer · IT &amp; OT</div>
+      <div class="right">v.4 — 2026</div>
+    </footer>
+  </div>
+</section>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  function activateTab(name, push){
+    tabs.forEach(t => {
+      const on = t.dataset.tab === name;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    panels.forEach(p => {
+      p.classList.toggle('active', p.id === 'panel-' + name);
+    });
+    // re-trigger reveal animations on switching tabs
+    document.querySelectorAll('.panel.active .reveal').forEach(el => {
+      el.classList.remove('in');
+      io.observe(el);
+    });
+    window.scrollTo({top: 0, behavior: 'instant' in window ? 'instant' : 'auto'});
+    if (push) {
+      history.replaceState(null, '', '#' + name);
+    }
+  }
+  tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.tab, true)));
+  document.querySelectorAll('[data-go]').forEach(el => {
+    el.addEventListener('click', e => { e.preventDefault(); activateTab(el.dataset.go, true); });
+  });
+
+  // Reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Smooth scroll for in-page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1 && document.querySelector(id)){
+        const t = document.querySelector(id);
+        if(t){
+          e.preventDefault();
+          window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 64, behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+  // Open from hash
+  const initial = (location.hash || '').replace('#','');
+  if (initial === 'portfolio' || initial === 'about') {
+    activateTab(initial, false);
+  }
+</script>
+
+</body>
+</html>
